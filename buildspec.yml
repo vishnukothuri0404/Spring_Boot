@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "No installation commands needed."  # Placeholder for any future installation commands
+
+  pre_build:
+    commands:
+      - echo "Executing the PreBuild Commands"
+      - aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 474668386920.dkr.ecr.us-east-2.amazonaws.com
+
+  build:
+    commands:
+      - echo "Executing the Build Commands"
+      - docker build -t vishnu/vishnu_project_springboot_application .
+
+  post_build:
+    commands:
+      - echo "Executing the PostBuild Commands"
+      - docker tag vishnu/vishnu_project_springboot_application:latest 474668386920.dkr.ecr.us-east-2.amazonaws.com/vishnu/vishnu_project_springboot_application:v$CODEBUILD_BUILD_NUMBER
+      - docker tag vishnu/vishnu_project_springboot_application:latest 474668386920.dkr.ecr.us-east-2.amazonaws.com/vishnu/vishnu_project_springboot_application:latest
+      - docker push 474668386920.dkr.ecr.us-east-2.amazonaws.com/vishnu/vishnu_project_springboot_application:latest
+      - docker push 474668386920.dkr.ecr.us-east-2.amazonaws.com/vishnu/vishnu_project_springboot_application:v$CODEBUILD_BUILD_NUMBER

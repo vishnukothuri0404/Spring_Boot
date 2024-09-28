@@ -22,3 +22,11 @@ phases:
       - docker tag vishnu/vishnu_project_springboot_application:latest 474668386920.dkr.ecr.us-east-2.amazonaws.com/vishnu/vishnu_project_springboot_application:latest
       - docker push 474668386920.dkr.ecr.us-east-2.amazonaws.com/vishnu/vishnu_project_springboot_application:latest
       - docker push 474668386920.dkr.ecr.us-east-2.amazonaws.com/vishnu/vishnu_project_springboot_application:v$CODEBUILD_BUILD_NUMBER
+      - echo "Creating imagedefinition.json file"
+      - |
+        echo '[
+          {
+            "name": "vishnu_project_springboot_application",
+            "imageUri": "474668386920.dkr.ecr.us-east-2.amazonaws.com/vishnu/vishnu_project_springboot_application:v'$CODEBUILD_BUILD_NUMBER'"
+          }
+        ]' > imagedefinition.json

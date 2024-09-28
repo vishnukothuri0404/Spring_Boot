@@ -65,7 +65,7 @@ public class CourseController {
 
     @GetMapping("/welcome")
     public String greetings() {
-        return "Hello LW , Final Tc";
+        return "Hello Vishnu , Final Tc";
     }
 
 

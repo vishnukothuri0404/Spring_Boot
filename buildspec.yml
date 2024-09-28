@@ -30,3 +30,7 @@ phases:
             "imageUri": "474668386920.dkr.ecr.us-east-2.amazonaws.com/vishnu/vishnu_project_springboot_application:v'$CODEBUILD_BUILD_NUMBER'"
           }
         ]' > imagedefinition.json
+
+artifacts:
+  files:
+    - '**/*'  # Capture all files, including imagedefinition.json

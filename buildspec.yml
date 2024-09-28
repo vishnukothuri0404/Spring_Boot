@@ -23,7 +23,7 @@ phases:
       - docker push 474668386920.dkr.ecr.us-east-2.amazonaws.com/vishnu/vishnu_project_springboot_application:latest
       - docker push 474668386920.dkr.ecr.us-east-2.amazonaws.com/vishnu/vishnu_project_springboot_application:v$CODEBUILD_BUILD_NUMBER
       - echo "Creating imagedefinition.json file"
-      - printf '[{"name":"vishnuspringbootservice","imageUri":"%s"}]' 474668386920.dkr.ecr.us-east-2.amazonaws.com/vishnu/vishnu_project_springboot_application:v$CODEBUILD_BUILD_NUMBER > imagedefinitions.json
+      - printf '[{"name":"springbootcontainer","imageUri":"%s"}]' 474668386920.dkr.ecr.us-east-2.amazonaws.com/vishnu/vishnu_project_springboot_application:v$CODEBUILD_BUILD_NUMBER > imagedefinitions.json
       - cat imagedefinitions.json
 
       
